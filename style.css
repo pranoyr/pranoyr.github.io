@@ -132,15 +132,9 @@ h2 {
   color: #111;
 }
 
-.project-list li a {
+.project-list li span {
   color: #1a3a6b;
-  text-decoration: underline;
-  text-underline-offset: 2px;
   font-weight: 500;
-}
-
-.project-list li a:hover {
-  color: #1d4ed8;
 }
 
 /* ── Download button ── */
