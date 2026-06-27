@@ -173,9 +173,8 @@ h2 {
   overflow-x: hidden;
 }
 
-/* Center placeholder/loading states */
+/* Center placeholder and error states */
 .preview-container:has(.preview-placeholder),
-.preview-container:has(.gh-loading),
 .preview-container:has(.gh-error) {
   display: flex;
   align-items: center;
@@ -202,33 +201,6 @@ h2 {
   font-size: 0.88rem;
   line-height: 1.6;
   color: #9ca3af;
-}
-
-/* Loading */
-.gh-loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  color: #9ca3af;
-}
-
-.gh-loading p {
-  margin: 0;
-  font-size: 0.85rem;
-}
-
-.spinner {
-  width: 28px;
-  height: 28px;
-  border: 2.5px solid #e5e7eb;
-  border-top-color: #1d4ed8;
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
 }
 
 /* GitHub card */

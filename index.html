@@ -11,6 +11,7 @@
 
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-light.min.css">
+  <script src="data.js"></script>
 </head>
 <body>
 
@@ -122,7 +123,6 @@
 <script>
   const container = document.getElementById('preview-container');
   const placeholder = document.getElementById('preview-placeholder');
-  const cache = {};
 
   const langColors = {
     'Python': '#3572A5', 'JavaScript': '#f1e05a', 'TypeScript': '#2b7489',
@@ -145,56 +145,9 @@
     return n >= 1000 ? (n / 1000).toFixed(1) + 'k' : n;
   }
 
-  async function loadRepoData(owner, repo) {
+  function loadRepoData(owner, repo) {
     const key = `${owner}/${repo}`;
-    if (key in cache) return cache[key];
-    const p = (async () => {
-      try {
-        const rRes = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
-        if (!rRes.ok) return null;
-        const rData = await rRes.json();
-
-        let readmeHtml = '';
-        try {
-          const mRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/readme`);
-          if (mRes.ok) {
-            const mData = await mRes.json();
-            const bytes = Uint8Array.from(atob(mData.content.replace(/\n/g, '')), c => c.charCodeAt(0));
-            const markdown = new TextDecoder('utf-8').decode(bytes);
-
-            const renderRes = await fetch('https://api.github.com/markdown', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ text: markdown, mode: 'gfm', context: `${owner}/${repo}` })
-            });
-            if (renderRes.ok) {
-              const html = await renderRes.text();
-              const tmp = document.createElement('div');
-              tmp.innerHTML = html;
-              const branch = rData.default_branch || 'main';
-              const base = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/`;
-              tmp.querySelectorAll('img').forEach(img => {
-                const src = img.getAttribute('src') || '';
-                if (src && !/^https?:/.test(src)) {
-                  img.src = base + src.replace(/^\.\//, '');
-                }
-                img.style.maxWidth = '100%';
-                img.style.height = 'auto';
-              });
-              tmp.querySelectorAll('a').forEach(a => {
-                a.target = '_blank';
-                a.rel = 'noopener';
-              });
-              readmeHtml = tmp.innerHTML;
-            }
-          }
-        } catch (e) { /* show card without readme */ }
-
-        return { ...rData, readmeHtml };
-      } catch (e) { return null; }
-    })();
-    cache[key] = p;
-    return p;
+    return Promise.resolve((window.PREBAKED || {})[key] || null);
   }
 
   function buildCard(data, url) {
@@ -247,14 +200,6 @@
     `;
   }
 
-  function showLoading() {
-    container.innerHTML = `
-      <div class="gh-loading">
-        <div class="spinner"></div>
-        <p>Loading preview…</p>
-      </div>`;
-  }
-
   let currentUrl = null;
 
   document.querySelectorAll('.project-list li[data-url]').forEach(item => {
@@ -266,11 +211,8 @@
       const parsed = parseGitHubUrl(url);
       if (!parsed) return;
 
-      const cached = cache[`${parsed.owner}/${parsed.repo}`];
-      if (!cached || typeof cached.then === 'function') showLoading();
-
       const data = await loadRepoData(parsed.owner, parsed.repo);
-      if (currentUrl !== url) return; // stale
+      if (currentUrl !== url) return;
       container.innerHTML = buildCard(data, url);
     });
   });
