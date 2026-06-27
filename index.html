@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -23,185 +23,97 @@
       <a href="https://github.com/pranoyr" target="_blank">GitHub</a> ·
       <a href="https://linkedin.com/in/pranoyr" target="_blank">LinkedIn</a>
     </p>
-
-    <a href="resume.pdf"
-       class="download-btn"
-       download>
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-           viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-        <polyline points="7 10 12 15 17 10"/>
-        <line x1="12" y1="15" x2="12" y2="3"/>
-      </svg>
-      <span>Download Resume</span>
-    </a>
   </header>
 
-  <section>
-    <h2>Experience</h2>
+  <div class="two-col-layout">
 
-    <div class="item">
-      <div class="item-header">
-        <strong>Avataar AI</strong>
-        <span>March 2026 – Present</span>
-      </div>
-      <em>AI Engineer — Bangalore</em>
+    <div class="projects-panel">
+      <section>
+        <h2>Open Source Contributions</h2>
+        <ul class="project-list">
+          <li data-url="https://github.com/lucidrains/vit-pytorch">
+            <a href="https://github.com/lucidrains/vit-pytorch" target="_blank">ViT-PyTorch</a>
+            — Merged PR implementing JetViT and ViT-5.
+          </li>
+          <li data-url="https://github.com/lucidrains/transfusion-pytorch">
+            <a href="https://github.com/lucidrains/transfusion-pytorch" target="_blank">Transfusion-PyTorch</a>
+            — Implemented unconditional KV caching, matching null-token sequence length to prompts for correct CFG alignment, and adding classifier-free guidance.
+          </li>
+          <li data-url="https://github.com/lucidrains/rectified-flow-pytorch">
+            <a href="https://github.com/lucidrains/rectified-flow-pytorch" target="_blank">Rectified Flow-PyTorch</a>
+            — Implemented the Unconstrained Alignment (UA) Flow and LapFlow.
+          </li>
+          <li data-url="https://github.com/lucidrains/mimic-video">
+            <a href="https://github.com/lucidrains/mimic-video" target="_blank">Mimic-Video</a>
+            — Improved noise scheduling, VAE input normalization, and action decoding with proprioceptive masking.
+          </li>
+          <li data-url="https://github.com/lucidrains/metacontroller">
+            <a href="https://github.com/lucidrains/metacontroller" target="_blank">MetaController</a>
+            — Fixed Switching Unit logic by incorporating the previous subgoal (z<sub>t-1</sub>) for correct hierarchical control.
+          </li>
+          <li data-url="https://github.com/lucidrains/pi-zero-pytorch">
+            <a href="https://github.com/lucidrains/pi-zero-pytorch" target="_blank">Pi-Zero-PyTorch</a>
+            — Fixed CFG RoPE alignment, temporal buffering, device compatibility, and unconditional pass robustness.
+          </li>
+        </ul>
+      </section>
 
+      <section>
+        <h2>Personal Projects</h2>
+        <ul class="project-list">
+          <li data-url="https://github.com/pranoyr/cnn-lstm">
+            <a href="https://github.com/pranoyr/cnn-lstm" target="_blank">CNN–LSTM (Video Classification)</a>
+          </li>
+          <li data-url="https://github.com/pranoyr/End-to-End-Trainable-Multi-Instance-Pose-Estimation-with-Transformers">
+            <a href="https://github.com/pranoyr/End-to-End-Trainable-Multi-Instance-Pose-Estimation-with-Transformers" target="_blank">End-to-End Multi-Instance Pose Estimation with Transformers</a>
+          </li>
+          <li data-url="https://github.com/pranoyr/large-scale-visual-relationship-understanding">
+            <a href="https://github.com/pranoyr/large-scale-visual-relationship-understanding" target="_blank">Large-scale Visual Relationship Understanding</a>
+          </li>
+          <li data-url="https://github.com/pranoyr/attention-models">
+            <a href="https://github.com/pranoyr/attention-models" target="_blank">Attention Models</a>
+          </li>
+          <li data-url="https://github.com/pranoyr/scene-graph-vit">
+            <a href="https://github.com/pranoyr/scene-graph-vit" target="_blank">Scene Graph ViT</a>
+          </li>
+          <li data-url="https://github.com/pranoyr/pix2seq">
+            <a href="https://github.com/pranoyr/pix2seq" target="_blank">Pix2Seq</a>
+          </li>
+          <li data-url="https://github.com/pranoyr/D2iT">
+            <a href="https://github.com/pranoyr/D2iT" target="_blank">D2iT</a>
+          </li>
+          <li data-url="https://github.com/pranoyr/lstm-object-detection">
+            <a href="https://github.com/pranoyr/lstm-object-detection" target="_blank">LSTM Object Detection</a>
+          </li>
+        </ul>
+      </section>
     </div>
 
-    <div class="item">
-      <div class="item-header">
-        <strong>Aqxle AI</strong>
-        <span>April 2025 – Feb 2026</span>
+    <div class="preview-panel">
+      <a href="resume.pdf" class="download-btn" download>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>Download Resume</span>
+      </a>
+
+      <div class="preview-container" id="preview-container">
+        <div class="preview-placeholder" id="preview-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+          </svg>
+          <p>Hover over a project<br>to preview it here</p>
+        </div>
       </div>
-      <em>AI Research Engineer — Bangalore</em>
-      <ul>
-        <li>Developed custom agents for automated survey data processing with natural language interfaces.</li>
-        <li>Implemented automated EDA pipelines for faster, consistent analytics.</li>
-      </ul>
     </div>
 
-    <div class="item">
-      <div class="item-header">
-        <strong>Accessia</strong>
-        <span>Apr 2024 – March 2025</span>
-      </div>
-      <em>Computer Vision Engineer — Bangalore</em>
-      <ul>
-        <li>Optimized ML pipelines in C/C++ and CUDA.</li>
-        <li>Implemented structured pruning, post-quantization, and QAT.</li>
-      </ul>
-    </div>
+  </div>
 
-    <div class="item">
-      <div class="item-header">
-        <strong>First Sense</strong>
-        <span>Nov 2021 – Feb 2024</span>
-      </div>
-      <em>Computer Vision Engineer — Bangalore</em>
-      <ul>
-        <li>Led CV development for animatable 3D Morphable Models (3DMMs).</li>
-        <li>Built vision enhancement solutions for virtual classrooms.</li>
-        <li>Implemented modified DETR for human pose estimation.</li>
-      </ul>
-    </div>
-
-    <div class="item">
-      <div class="item-header">
-        <strong>Neuroplex</strong>
-        <span>Aug 2018 – Jan 2021</span>
-      </div>
-      <em>Co-Founder & CV Engineer — Trivandrum</em>
-      <ul>
-        <li>Built AI video analytics platform deployed across Indian Oil petrol pumps.</li>
-        <li>Deployed CV models on NVIDIA Jetson devices.</li>
-        <li>Worked on tracking, LPR, re-ID, segmentation, and action recognition.</li>
-      </ul>
-    </div>
-  </section>
-
-<section>
-  <h2>Open Source & Personal Projects</h2>
-
-  <h3>Open Source Contributions</h3>
-  <ul>
-    <li>
-      <a href="https://github.com/lucidrains/vit-pytorch" target="_blank">
-        ViT-PyTorch
-      </a>
-      — Merged PR implementing JetViT and ViT-5.
-    </li>
-
-    <li>
-      <a href="https://github.com/lucidrains/transfusion-pytorch" target="_blank">
-        Transfusion-PyTorch
-      </a>
-      — Implemented unconditional KV caching, matching null-token
-      sequence length to prompts for correct CFG alignment, and adding
-      classifier-free guidance.
-    </li>
-
-     <li>
-      <a href="https://github.com/lucidrains/rectified-flow-pytorch" target="_blank">
-        Rectified Flow-PyTorch
-      </a>
-      — Implemented the Unconstrained Alignment (UA) Flow and LapFlow
-    </li>
-
-    <li>
-      <a href="https://github.com/lucidrains/mimic-video" target="_blank">
-        Mimic-Video
-      </a>
-      — Improved noise scheduling, VAE input normalization, and
-      action decoding with proprioceptive masking.
-    </li>
-
-
-    <li>
-      <a href="https://github.com/lucidrains/metacontroller" target="_blank">
-        MetaController
-      </a>
-      — Fixed Switching Unit logic by incorporating the previous
-      subgoal (z<sub>t-1</sub>) for correct hierarchical control.
-    </li>
-
-    
-    <li>
-      <a href="https://github.com/lucidrains/pi-zero-pytorch" target="_blank">
-        Pi-Zero-PyTorch
-      </a>
-      — Fixed CFG RoPE alignment, temporal buffering, device
-      compatibility, and unconditional pass robustness.
-    </li>
-  </ul>
-
-  <h3>Personal Projects</h3>
-  <ul>
-    <li>
-      <a href="https://github.com/pranoyr/cnn-lstm" target="_blank">
-        CNN–LSTM (Video Classification)
-      </a>
-    </li>
-    <li>
-      <a href="https://github.com/pranoyr/End-to-End-Trainable-Multi-Instance-Pose-Estimation-with-Transformers" target="_blank">
-        End-to-End Multi-Instance Pose Estimation with Transformers
-      </a>
-    </li>
-    <li>
-      <a href="https://github.com/pranoyr/large-scale-visual-relationship-understanding" target="_blank">
-        Large-scale Visual Relationship Understanding
-      </a>
-    </li>
-    <li>
-      <a href="https://github.com/pranoyr/attention-models" target="_blank">
-        Attention Models
-      </a>
-    </li>
-    <li>
-      <a href="https://github.com/pranoyr/scene-graph-vit" target="_blank">
-        Scene Graph ViT
-      </a>
-    </li>
-    <li>
-      <a href="https://github.com/pranoyr/pix2seq" target="_blank">
-        Pix2Seq
-      </a>
-    </li>
-    <li>
-      <a href="https://github.com/pranoyr/D2iT" target="_blank">
-        D2iT
-      </a>
-    </li>
-    <li>
-      <a href="https://github.com/pranoyr/lstm-object-detection" target="_blank">
-        LSTM Object Detection
-      </a>
-    </li>
-  </ul>
-</section>
-
-  <section>
+  <section class="skills-section">
     <h2>Technical Skills</h2>
     <p>
       <strong>Languages:</strong> Python, C/C++, CUDA<br/>
@@ -209,7 +121,7 @@
       <strong>ML Systems:</strong> Diffusion, Flow Matching, Transformers, Agentic Architectures<br/>
       <strong>Deployment:</strong> ONNX, TensorRT<br/>
       <strong>Databases:</strong> Neo4j, MongoDB, MySQL<br/>
-      <strong>Math:</strong> Linear Algebra, Multivariable Calculus, Probability & Statistics
+      <strong>Math:</strong> Linear Algebra, Multivariable Calculus, Probability &amp; Statistics
     </p>
   </section>
 
@@ -217,6 +129,150 @@
     <p>© 2026 Pranoy Radhakrishnan</p>
   </footer>
 </main>
+
+<script>
+  const container = document.getElementById('preview-container');
+  const placeholder = document.getElementById('preview-placeholder');
+  const cache = {};
+
+  const langColors = {
+    'Python': '#3572A5', 'JavaScript': '#f1e05a', 'TypeScript': '#2b7489',
+    'C++': '#f34b7d', 'C': '#555555', 'CUDA': '#3A4E3A',
+    'Jupyter Notebook': '#DA5B0B', 'HTML': '#e34c26', 'CSS': '#563d7c',
+  };
+
+  function esc(str) {
+    return String(str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function parseGitHubUrl(url) {
+    const m = url.match(/github\.com\/([^/]+)\/([^/\s?#]+)/);
+    return m ? { owner: m[1], repo: m[2] } : null;
+  }
+
+  function stripMarkdown(text) {
+    return text
+      .replace(/```[\s\S]*?```/g, '')
+      .replace(/`[^`]+`/g, s => s.slice(1, -1))
+      .replace(/#{1,6}\s+/g, '')
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
+      .replace(/\*([^*]+)\*/g, '$1')
+      .replace(/!\[[^\]]*\]\([^)]+\)/g, '')
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      .replace(/^\s*[-*+]\s+/gm, '')
+      .replace(/^\s*>\s+/gm, '')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+  }
+
+  function fmtNum(n) {
+    return n >= 1000 ? (n / 1000).toFixed(1) + 'k' : n;
+  }
+
+  async function loadRepoData(owner, repo) {
+    const key = `${owner}/${repo}`;
+    if (key in cache) return cache[key];
+    const p = (async () => {
+      try {
+        const [rRes, mRes] = await Promise.all([
+          fetch(`https://api.github.com/repos/${owner}/${repo}`),
+          fetch(`https://api.github.com/repos/${owner}/${repo}/readme`)
+        ]);
+        const rData = await rRes.json();
+        let readmeText = '';
+        if (mRes.ok) {
+          const mData = await mRes.json();
+          const bytes = Uint8Array.from(atob(mData.content.replace(/\n/g, '')), c => c.charCodeAt(0));
+          const raw = new TextDecoder('utf-8').decode(bytes);
+          readmeText = stripMarkdown(raw).slice(0, 700);
+        }
+        return { ...rData, readmeText };
+      } catch (e) { return null; }
+    })();
+    cache[key] = p;
+    return p;
+  }
+
+  function buildCard(data, url) {
+    if (!data || data.message) {
+      return `<div class="gh-error">
+        <p>Could not load preview.</p>
+        <a href="${esc(url)}" target="_blank" class="gh-visit-btn">View on GitHub →</a>
+      </div>`;
+    }
+    const langColor = langColors[data.language] || '#8b949e';
+    return `
+      <div class="gh-card">
+        <div class="gh-card-header">
+          <div class="gh-repo-name">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="gh-icon">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <span class="gh-owner-text">${esc(data.owner?.login || '')}</span>
+            <span class="gh-sep">/</span>
+            <span class="gh-repo-text">${esc(data.name)}</span>
+          </div>
+          <a href="${esc(url)}" target="_blank" class="gh-visit-btn">Visit →</a>
+        </div>
+        ${data.description ? `<p class="gh-desc">${esc(data.description)}</p>` : ''}
+        <div class="gh-stats">
+          <span class="gh-stat">
+            <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+              <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/>
+            </svg>
+            ${fmtNum(data.stargazers_count || 0)}
+          </span>
+          <span class="gh-stat">
+            <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+              <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"/>
+            </svg>
+            ${fmtNum(data.forks_count || 0)}
+          </span>
+          ${data.language ? `
+          <span class="gh-lang">
+            <span class="gh-lang-dot" style="background:${langColor}"></span>
+            ${esc(data.language)}
+          </span>` : ''}
+        </div>
+        ${data.readmeText ? `
+        <div class="gh-readme">
+          <div class="gh-readme-label">README</div>
+          <div class="gh-readme-text">${esc(data.readmeText)}</div>
+        </div>` : ''}
+      </div>
+    `;
+  }
+
+  function showLoading() {
+    container.innerHTML = `
+      <div class="gh-loading">
+        <div class="spinner"></div>
+        <p>Loading preview…</p>
+      </div>`;
+  }
+
+  let currentUrl = null;
+
+  document.querySelectorAll('.project-list li[data-url]').forEach(item => {
+    item.addEventListener('mouseenter', async () => {
+      const url = item.dataset.url;
+      if (url === currentUrl) return;
+      currentUrl = url;
+
+      const parsed = parseGitHubUrl(url);
+      if (!parsed) return;
+
+      const cached = cache[`${parsed.owner}/${parsed.repo}`];
+      if (!cached || typeof cached.then === 'function') showLoading();
+
+      const data = await loadRepoData(parsed.owner, parsed.repo);
+      if (currentUrl !== url) return; // stale
+      container.innerHTML = buildCard(data, url);
+    });
+  });
+</script>
 
 </body>
 </html>
