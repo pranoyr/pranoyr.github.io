@@ -228,6 +228,7 @@
       const data = await loadRepoData(parsed.owner, parsed.repo);
       if (currentUrl !== url) return;
       container.innerHTML = buildCard(data, url);
+      container.scrollTop = 0;
     });
   });
 
