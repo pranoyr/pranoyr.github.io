@@ -65,27 +65,35 @@
         <ul class="project-list">
           <li data-url="https://github.com/pranoyr/cnn-lstm">
             <a href="https://github.com/pranoyr/cnn-lstm" target="_blank">CNN–LSTM (Video Classification)</a>
+            — CNN feature extraction combined with LSTM temporal modeling for video classification.
           </li>
           <li data-url="https://github.com/pranoyr/End-to-End-Trainable-Multi-Instance-Pose-Estimation-with-Transformers">
             <a href="https://github.com/pranoyr/End-to-End-Trainable-Multi-Instance-Pose-Estimation-with-Transformers" target="_blank">End-to-End Multi-Instance Pose Estimation with Transformers</a>
+            — DETR-style end-to-end trainable architecture for multi-person pose estimation without post-processing.
           </li>
           <li data-url="https://github.com/pranoyr/large-scale-visual-relationship-understanding">
             <a href="https://github.com/pranoyr/large-scale-visual-relationship-understanding" target="_blank">Large-scale Visual Relationship Understanding</a>
+            — Scene graph generation for detecting and classifying visual relationships between objects at scale.
           </li>
           <li data-url="https://github.com/pranoyr/attention-models">
             <a href="https://github.com/pranoyr/attention-models" target="_blank">Attention Models</a>
+            — Clean PyTorch implementations of SOTA attention mechanisms and transformer variants.
           </li>
           <li data-url="https://github.com/pranoyr/scene-graph-vit">
             <a href="https://github.com/pranoyr/scene-graph-vit" target="_blank">Scene Graph ViT</a>
+            — Scene graph generation using Vision Transformers for structured visual understanding.
           </li>
           <li data-url="https://github.com/pranoyr/pix2seq">
             <a href="https://github.com/pranoyr/pix2seq" target="_blank">Pix2Seq</a>
+            — Object detection framed as a sequence generation task following the Pix2Seq framework.
           </li>
           <li data-url="https://github.com/pranoyr/D2iT">
             <a href="https://github.com/pranoyr/D2iT" target="_blank">D2iT</a>
+            — Diffusion model built on a Transformer backbone (DiT-style) for image generation.
           </li>
           <li data-url="https://github.com/pranoyr/lstm-object-detection">
             <a href="https://github.com/pranoyr/lstm-object-detection" target="_blank">LSTM Object Detection</a>
+            — LSTM-SSD for temporal object detection across video frames.
           </li>
         </ul>
       </section>
@@ -203,9 +211,6 @@
   let currentUrl = null;
   const allItems = document.querySelectorAll('.project-list li[data-url]');
 
-  // Select ViT-PyTorch by default on load
-  allItems[0]?.click();
-
   allItems.forEach(item => {
     item.addEventListener('click', async () => {
       const url = item.dataset.url;
@@ -225,6 +230,9 @@
       container.innerHTML = buildCard(data, url);
     });
   });
+
+  // Trigger ViT-PyTorch by default after listeners are registered
+  allItems[0]?.click();
 </script>
 
 </body>
