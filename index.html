@@ -203,6 +203,9 @@
   let currentUrl = null;
   const allItems = document.querySelectorAll('.project-list li[data-url]');
 
+  // Select ViT-PyTorch by default on load
+  allItems[0]?.click();
+
   allItems.forEach(item => {
     item.addEventListener('click', async () => {
       const url = item.dataset.url;
