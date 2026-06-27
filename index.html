@@ -150,34 +150,46 @@
     if (key in cache) return cache[key];
     const p = (async () => {
       try {
-        const [rRes, mRes] = await Promise.all([
-          fetch(`https://api.github.com/repos/${owner}/${repo}`),
-          fetch(`https://api.github.com/repos/${owner}/${repo}/readme`, {
-            headers: { 'Accept': 'application/vnd.github.html' }
-          })
-        ]);
+        const rRes = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
+        if (!rRes.ok) return null;
         const rData = await rRes.json();
+
         let readmeHtml = '';
-        if (mRes.ok) {
-          const html = await mRes.text();
-          const tmp = document.createElement('div');
-          tmp.innerHTML = html;
-          const branch = rData.default_branch || 'main';
-          const base = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/`;
-          tmp.querySelectorAll('img').forEach(img => {
-            const src = img.getAttribute('src') || '';
-            if (src && !/^https?:/.test(src)) {
-              img.src = base + src.replace(/^\.\//, '');
+        try {
+          const mRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/readme`);
+          if (mRes.ok) {
+            const mData = await mRes.json();
+            const bytes = Uint8Array.from(atob(mData.content.replace(/\n/g, '')), c => c.charCodeAt(0));
+            const markdown = new TextDecoder('utf-8').decode(bytes);
+
+            const renderRes = await fetch('https://api.github.com/markdown', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ text: markdown, mode: 'gfm', context: `${owner}/${repo}` })
+            });
+            if (renderRes.ok) {
+              const html = await renderRes.text();
+              const tmp = document.createElement('div');
+              tmp.innerHTML = html;
+              const branch = rData.default_branch || 'main';
+              const base = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/`;
+              tmp.querySelectorAll('img').forEach(img => {
+                const src = img.getAttribute('src') || '';
+                if (src && !/^https?:/.test(src)) {
+                  img.src = base + src.replace(/^\.\//, '');
+                }
+                img.style.maxWidth = '100%';
+                img.style.height = 'auto';
+              });
+              tmp.querySelectorAll('a').forEach(a => {
+                a.target = '_blank';
+                a.rel = 'noopener';
+              });
+              readmeHtml = tmp.innerHTML;
             }
-            img.style.maxWidth = '100%';
-            img.style.height = 'auto';
-          });
-          tmp.querySelectorAll('a').forEach(a => {
-            a.target = '_blank';
-            a.rel = 'noopener';
-          });
-          readmeHtml = tmp.innerHTML;
-        }
+          }
+        } catch (e) { /* show card without readme */ }
+
         return { ...rData, readmeHtml };
       } catch (e) { return null; }
     })();
@@ -186,7 +198,7 @@
   }
 
   function buildCard(data, url) {
-    if (!data || data.message) {
+    if (!data) {
       return `<div class="gh-error">
         <p>Could not load preview.</p>
         <a href="${esc(url)}" target="_blank" class="gh-visit-btn">View on GitHub →</a>
