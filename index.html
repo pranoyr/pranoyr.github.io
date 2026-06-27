@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-light.min.css">
 </head>
 <body>
 
@@ -140,22 +141,6 @@
     return m ? { owner: m[1], repo: m[2] } : null;
   }
 
-  function stripMarkdown(text) {
-    return text
-      .replace(/```[\s\S]*?```/g, '')
-      .replace(/`[^`]+`/g, s => s.slice(1, -1))
-      .replace(/<[^>]+>/g, '')
-      .replace(/#{1,6}\s+/g, '')
-      .replace(/\*\*([^*]+)\*\*/g, '$1')
-      .replace(/\*([^*]+)\*/g, '$1')
-      .replace(/!\[[^\]]*\]\([^)]+\)/g, '')
-      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-      .replace(/^\s*[-*+]\s+/gm, '')
-      .replace(/^\s*>\s+/gm, '')
-      .replace(/\n{3,}/g, '\n\n')
-      .trim();
-  }
-
   function fmtNum(n) {
     return n >= 1000 ? (n / 1000).toFixed(1) + 'k' : n;
   }
@@ -167,17 +152,33 @@
       try {
         const [rRes, mRes] = await Promise.all([
           fetch(`https://api.github.com/repos/${owner}/${repo}`),
-          fetch(`https://api.github.com/repos/${owner}/${repo}/readme`)
+          fetch(`https://api.github.com/repos/${owner}/${repo}/readme`, {
+            headers: { 'Accept': 'application/vnd.github.html' }
+          })
         ]);
         const rData = await rRes.json();
-        let readmeText = '';
+        let readmeHtml = '';
         if (mRes.ok) {
-          const mData = await mRes.json();
-          const bytes = Uint8Array.from(atob(mData.content.replace(/\n/g, '')), c => c.charCodeAt(0));
-          const raw = new TextDecoder('utf-8').decode(bytes);
-          readmeText = stripMarkdown(raw).slice(0, 700);
+          const html = await mRes.text();
+          const tmp = document.createElement('div');
+          tmp.innerHTML = html;
+          const branch = rData.default_branch || 'main';
+          const base = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/`;
+          tmp.querySelectorAll('img').forEach(img => {
+            const src = img.getAttribute('src') || '';
+            if (src && !/^https?:/.test(src)) {
+              img.src = base + src.replace(/^\.\//, '');
+            }
+            img.style.maxWidth = '100%';
+            img.style.height = 'auto';
+          });
+          tmp.querySelectorAll('a').forEach(a => {
+            a.target = '_blank';
+            a.rel = 'noopener';
+          });
+          readmeHtml = tmp.innerHTML;
         }
-        return { ...rData, readmeText };
+        return { ...rData, readmeHtml };
       } catch (e) { return null; }
     })();
     cache[key] = p;
@@ -225,10 +226,10 @@
             ${esc(data.language)}
           </span>` : ''}
         </div>
-        ${data.readmeText ? `
+        ${data.readmeHtml ? `
         <div class="gh-readme">
           <div class="gh-readme-label">README</div>
-          <div class="gh-readme-text">${esc(data.readmeText)}</div>
+          <article class="markdown-body gh-readme-body">${data.readmeHtml}</article>
         </div>` : ''}
       </div>
     `;

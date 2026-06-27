@@ -166,12 +166,14 @@ h2 {
 .preview-container {
   width: 100%;
   min-height: 520px;
+  max-height: calc(100vh - 140px);
   border-radius: 2px;
   border: 1px solid #ddd9d0;
-  background: #faf9f7;
-  overflow: hidden;
+  background: #ffffff;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
@@ -333,19 +335,25 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #9ca3af;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
-.gh-readme-text {
-  font-size: 0.82rem;
-  line-height: 1.65;
-  color: #4b5563;
-  white-space: pre-wrap;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 14;
-  line-clamp: 14;
-  -webkit-box-orient: vertical;
+.gh-readme-body {
+  font-size: 14px;
+}
+
+.gh-readme-body img {
+  max-width: 100%;
+  height: auto;
+}
+
+.gh-readme-body a {
+  color: #0969da;
+}
+
+/* Keep markdown-body font from overriding page font for the card header */
+.gh-card {
+  font-family: 'Inter', sans-serif;
 }
 
 /* Error state */
