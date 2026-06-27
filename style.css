@@ -364,20 +364,6 @@ h2 {
   font-size: 0.88rem;
 }
 
-/* ── Skills section (full width below two-col) ── */
-.skills-section {
-  margin-bottom: 32px;
-  padding-top: 8px;
-  border-top: 1px solid #ddd9d0;
-  font-size: 0.88rem;
-}
-
-.skills-section p {
-  margin: 0;
-  color: #374151;
-  line-height: 1.9;
-}
-
 /* ── Footer ── */
 footer {
   text-align: center;

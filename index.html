@@ -113,18 +113,6 @@
 
   </div>
 
-  <section class="skills-section">
-    <h2>Technical Skills</h2>
-    <p>
-      <strong>Languages:</strong> Python, C/C++, CUDA<br/>
-      <strong>Frameworks:</strong> PyTorch, TensorFlow, Keras, LangChain<br/>
-      <strong>ML Systems:</strong> Diffusion, Flow Matching, Transformers, Agentic Architectures<br/>
-      <strong>Deployment:</strong> ONNX, TensorRT<br/>
-      <strong>Databases:</strong> Neo4j, MongoDB, MySQL<br/>
-      <strong>Math:</strong> Linear Algebra, Multivariable Calculus, Probability &amp; Statistics
-    </p>
-  </section>
-
   <footer>
     <p>© 2026 Pranoy Radhakrishnan</p>
   </footer>
@@ -156,6 +144,7 @@
     return text
       .replace(/```[\s\S]*?```/g, '')
       .replace(/`[^`]+`/g, s => s.slice(1, -1))
+      .replace(/<[^>]+>/g, '')
       .replace(/#{1,6}\s+/g, '')
       .replace(/\*\*([^*]+)\*\*/g, '$1')
       .replace(/\*([^*]+)\*/g, '$1')
