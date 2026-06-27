@@ -71,11 +71,13 @@ body {
 }
 
 .projects-panel {
-  flex: 0 0 420px;
+  flex: 0 0 380px;
+  min-width: 0;
 }
 
 .preview-panel {
   flex: 1;
+  min-width: 0;
   position: sticky;
   top: 24px;
   display: flex;
@@ -115,14 +117,19 @@ h2 {
   border-radius: 2px;
   font-size: 0.875rem;
   color: #2c2c2c;
-  cursor: default;
+  cursor: pointer;
   transition: background 0.12s ease;
-  border: 1px solid transparent;
+  border-left: 3px solid transparent;
 }
 
 .project-list li:hover {
+  background: #f0f3fa;
+}
+
+.project-list li.active {
   background: #eef1f8;
-  border-color: #cdd6f0;
+  border-left-color: #1a3a6b;
+  color: #111;
 }
 
 .project-list li a {

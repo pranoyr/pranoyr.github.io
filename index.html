@@ -201,10 +201,16 @@
   }
 
   let currentUrl = null;
+  const allItems = document.querySelectorAll('.project-list li[data-url]');
 
-  document.querySelectorAll('.project-list li[data-url]').forEach(item => {
-    item.addEventListener('mouseenter', async () => {
+  allItems.forEach(item => {
+    item.addEventListener('click', async () => {
       const url = item.dataset.url;
+
+      // Update selected highlight
+      allItems.forEach(li => li.classList.remove('active'));
+      item.classList.add('active');
+
       if (url === currentUrl) return;
       currentUrl = url;
 
